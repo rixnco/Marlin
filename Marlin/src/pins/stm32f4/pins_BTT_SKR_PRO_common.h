@@ -78,8 +78,8 @@
     #define X_MIN_PIN                       PE15  // E0
   #endif
 #else
-  #define X_MIN_PIN                         PB10  // X-
-  #define X_MAX_PIN                         PE15  // E0
+  #define X_MAX_PIN                         PB10  // X-  <-- X+
+  #define X_MIN_PIN                         PE15  // E0
 #endif
 
 #ifdef Y_STALL_SENSITIVITY
@@ -90,8 +90,8 @@
     #define Y_MIN_PIN                       PE10  // E1
   #endif
 #else
-  #define Y_MIN_PIN                         PE12  // Y-
-  #define Y_MAX_PIN                         PE10  // E1
+  #define Y_MAX_PIN                         PE12  // Y-  <-- Y+
+  #define Y_MIN_PIN                         PE10  // E1
 #endif
 
 #ifdef Z_STALL_SENSITIVITY
@@ -304,6 +304,14 @@
   #define FAN2_PIN                          PE6   // Fan2
 #endif
 
+
+
+#define TEMP_0_CS_PIN                       EXT1_06_PIN
+#define TEMP_1_CS_PIN                       EXT1_08_PIN
+#define TEMP_0_SCK_PIN                     EXT1_09_PIN
+#define TEMP_0_MISO_PIN                    EXT1_10_PIN
+#define TEMP_0_MOSI_PIN                    EXT1_05_PIN
+
 //
 // Misc. Functions
 //
@@ -338,6 +346,39 @@
 #define EXP2_06_PIN                         PB15
 #define EXP2_07_PIN                         PF12
 #define EXP2_08_PIN                         -1
+/**
+ *               -----                             -----
+ *           5v | 1 2 | GND                    5V | 1 2 | GND
+ *          PF8 | 3 4 | PC9                   PE4 | 3 4 | PD0
+ *         PF10 | 5 6 | PF9                   PE2 | 5 6   PD2
+ *          PC5 | 7 8 | PC4                   PE0 | 7 8 | PD5
+ *         PG13 | 9 10| PG11                       -----
+ *          PD3 | 9 10| PG14                       EXT2
+ *          PF7 | 9 10| PC1 
+ *               -----
+ *               EXT1
+ */
+
+#define EXT1_03_PIN                         PF8
+#define EXT1_04_PIN                         PC9
+#define EXT1_05_PIN                         PF10
+#define EXT1_06_PIN                         PF9
+#define EXT1_07_PIN                         PC5
+#define EXT1_08_PIN                         PC4
+#define EXT1_09_PIN                         PG13
+#define EXT1_10_PIN                         PG11
+#define EXT1_11_PIN                         PD3
+#define EXT1_12_PIN                         PG14
+#define EXT1_13_PIN                         PF7
+#define EXT1_14_PIN                         PC1
+
+#define EXT2_03_PIN                         PE4
+#define EXT2_04_PIN                         PD0
+#define EXT2_05_PIN                         PE2
+#define EXT2_06_PIN                         PD2
+#define EXT2_07_PIN                         PE0
+#define EXT2_08_PIN                         PD5
+//																							 
 
 //
 // Onboard SD card
@@ -493,8 +534,8 @@
 
     #define LCD_PINS_RS              EXP1_04_PIN
 
-    #define BTN_EN1                  EXP2_03_PIN
-    #define BTN_EN2                  EXP2_05_PIN
+    #define BTN_EN1                  EXP1_08_PIN
+    #define BTN_EN2                  EXP1_06_PIN
 
     #define LCD_PINS_ENABLE          EXP1_03_PIN
     #define LCD_PINS_D4              EXP1_05_PIN
